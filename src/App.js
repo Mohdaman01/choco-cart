@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import chocolates from "./assets/chocolates";
+import { Col, Container, Row } from "react-bootstrap";
+import './assets/container.css';
+import { useState } from "react";
+import Header from './components/Header';
+import Alert from "./components/Alert";
 
 function App() {
+
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [show, setShow] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Header totalPrice={totalPrice} setTotalPrice={setTotalPrice} cart={cart} setCart={setCart} />
+
+        <Container className="container" style={{ paddingTop: '5rem' }}>
+          <Row >
+            {chocolates.map((chocolate) => (
+              <Col className="d-flex" key={chocolate.id} >
+                <Card chocolate={chocolate} className="flex-fill" setCart={setCart} setTotalPrice={setTotalPrice} key={chocolate.id} totalItems={cart.length} setShow={setShow} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+        <Alert show={show} setShow={setShow} />
+    </>
+
   );
 }
 

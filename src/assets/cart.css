@@ -1,0 +1,21 @@
+
+.cartItem{
+    list-style: none;
+    display: flex;
+    border-bottom:1px solid grey ;
+    margin: .5rem 0;
+    padding: .8rem 0;
+}
+
+.leftSide{
+    width: 5rem;
+}   
+
+.img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.rightSide{
+    margin-left: 3rem ;
+}
